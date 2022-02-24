@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      margin: 0;
+      position: relative;
+      background: lightgrey;
+    }
+    .navbar a:hover{
+      transition:  2s all;
+    
+    }
+    .navbar a{
+      font-size: 1.5rem;
+      padding: 1.25rem;
+      
+    }
+    .navbar{
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      column-gap: 2rem;
+      background: green;
+      height: 6vh;
+      transition:  2s all;
+    }
+
+    .dropdown {
+       --bottom-dropdown: 6;
+      --top-dropdown: auto;
+      --number: 6;
+      /*--bottom-dropdown: auto;
+      --top-dropdown: 6;*/
+      background: rgb(218, 44, 44);
+      height: 10vh;
+      position: absolute;
+      width: 100%;
+      display: inline-block;
+      bottom: calc(var(--bottom-dropdown) * 1vh);
+      top: calc(var(--top-dropdown) * 1vh);
+      right: 0;
+      left: 0;
+
+  
+    }
+
+    .dropdown:hover{
+      transition:  2s all;
+    }
+
+    
+
+
+
+
+    .container {
+            position: relative;
+            height: 20vh;
+            width: 20vh;
+            border: solid blue 0.05vh;
+        }
+
+        .child {
+            position: absolute;
+            display: inline-block;
+            height: 5vh;
+            width: 5vh;
+            background-color: red;
+            top: calc( 100% - 5vh ); /*100% - height*/
+            transition: all .3s ease;
+            will-change: top;
+        }
+
+  .container:hover  .child{
+            top: 0;  
+        }
+
+   
+   
+
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <a>Link 1</a>
+    <a>Link 2</a>
+    <a>Link 3</a>
+  </div>
+
+  <div class="dropdown">aa</div>
+
+  <div class="container">
+    <div class="child"></div>
+  </div>
+
+  <script>
+    const btn = document.querySelectorAll('a')[0]
+    const dropdown = document.querySelector('.dropdown')
+    const overlay = document.querySelector('.overlay')
+    const image = document.querySelector('#image')
+    console.log(btn)
+
+
+    
+    btn.addEventListener('mouseover', activateDropdown)
+
+    btn.addEventListener('mouseout', desactivateDropdown)
+
+    function activateDropdown() {
+      console.log('test')
+      dropdown.style.setProperty('--bottom-dropdown', 'auto')
+      dropdown.style.setProperty('--top-dropdown', 6)
+      overlay.style.opacity = '0.15';
+   
+    }
+
+    function desactivateDropdown() {
+      console.log('untest')
+      dropdown.style.setProperty('--bottom-dropdown', 6)
+      dropdown.style.setProperty('--top-dropdown', 'auto')
+      overlay.style.opacity = '0';
+    }
+
+  </script>
+</body>
+</html>
